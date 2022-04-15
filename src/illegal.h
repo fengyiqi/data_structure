@@ -13,4 +13,13 @@ public:
     void outputMessage() {std::cout << message << std::endl;}
 };
 
+class illegalIndex 
+{
+   public:
+      illegalIndex(std::string theMessage = "Illegal index") : message(theMessage) {};
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
 #endif

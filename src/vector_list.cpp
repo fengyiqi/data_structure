@@ -36,7 +36,11 @@ void vectorList<T>::erase(int theIndex) {
 
 template<typename T>
 void vectorList<T>::insert(int theIndex, const T& theElement) {
-    checkIndex(theIndex);
+    if (theIndex < 0 || theIndex > size()){
+        std::ostringstream ss;
+        ss << "index = " << theIndex << " size = " << listSize;
+        throw illegalIndex(ss.str());
+    }
     element->insert(begin() + theIndex, theElement);
 }
 

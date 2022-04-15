@@ -59,7 +59,11 @@ void arrayList<T>::erase(int theIndex) {
 
 template<typename T>
 void arrayList<T>::insert(int theIndex, const T& theElement) {
-    checkIndex(theIndex);
+    if (theIndex < 0 || theIndex > listSize){
+        std::ostringstream ss;
+        ss << "index = " << theIndex << " size = " << listSize;
+        throw illegalIndex(ss.str());
+    }
     if (listSize == arrayLength){
         changeLength1D(element, arrayLength, 2 * arrayLength);
         arrayLength *= 2;

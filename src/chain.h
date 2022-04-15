@@ -16,11 +16,38 @@ public:
 
     bool empty() const {return listSize == 0;}
     int size() const {return listSize;}
-    T& get(int index) const;
+    T& get(int theIndex) const;
     int indexOf(const T& theElement) const;
     void erase(int theIndex);
     void insert(int theIndex, const T& theElement);
     void output(std::ostream& out) const;
+
+    class iterator
+    {
+        protected:
+            chainNode<T>* node;
+        public:
+            iterator(chainNode<T>* theNode = nullptr) : node(theNode;) {}
+
+            T& operator*() const {return node->element;}
+            T* operator->() const {return &(node->element);}
+            iterator& operator++() {node = node->next; return *this; }
+            iterator operator++(int) {iterator old = *this; node = node->next; return old;}
+
+            bool operator!=(const iterator right) const {return node != right.node;}
+            bool operator==(const iterator right) const {return node == right.node;}
+    };
+    
+    iterator begin() {return iterator(firstNode);}
+    iterator end() {return iterator(nullptr);}
 };
+
+void chainTest();
+
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const chainNode<T>& x) {
+    x.output(out);
+    return out;
+}
 
 #endif
