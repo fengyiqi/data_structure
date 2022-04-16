@@ -3,10 +3,18 @@
 
 #include <iostream>
 
+// prior declaration to make function declaration possible
+template<class T>
+class matrix;
+
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const matrix<T>& m);
+
 // the index of the matrix starts from 1
 template<class T>
 class matrix {
-    friend std::ostream& operator<<(std::ostream&, const matrix<T>&);
+    // specify function type
+    friend std::ostream& operator<<<T>(std::ostream& out, const matrix& m);
 private:
     int theRows, theColumns;
     T* element;
@@ -26,5 +34,7 @@ public:
     matrix<T> operator*(const matrix<T>&) const;
     matrix<T>& operator+=(const T&);
 };
+
+void matrixTest();
 
 #endif
