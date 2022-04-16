@@ -22,4 +22,25 @@ class illegalIndex
       std::string message;
 };
 
+class matrixIndexOutOfBounds 
+{
+   public:
+      matrixIndexOutOfBounds(std::string theMessage = "Matrix index out of bounds") {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
+// matrix size mismatch
+class matrixSizeMismatch 
+{
+   public:
+      matrixSizeMismatch(std::string theMessage = 
+                   "The size of the two matrics doesn't match")
+            {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
 #endif

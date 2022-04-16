@@ -38,7 +38,7 @@ template<typename T>
 void vectorList<T>::insert(int theIndex, const T& theElement) {
     if (theIndex < 0 || theIndex > size()){
         std::ostringstream ss;
-        ss << "index = " << theIndex << " size = " << listSize;
+        ss << "index = " << theIndex << " size = " << size();
         throw illegalIndex(ss.str());
     }
     element->insert(begin() + theIndex, theElement);
@@ -65,6 +65,7 @@ void vectorListTest(){
     vectorList<int> y(10);
     for (int i = 0; i < 20; i++)
         y.insert(i, i);
+    y.erase(10);
     std::cout << y << std::endl;
     std::reverse(y.begin(), y.end());
     std::cout << y << std::endl;

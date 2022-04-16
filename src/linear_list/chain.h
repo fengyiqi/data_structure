@@ -27,7 +27,7 @@ public:
         protected:
             chainNode<T>* node;
         public:
-            iterator(chainNode<T>* theNode = nullptr) : node(theNode;) {}
+            iterator(chainNode<T>* theNode = nullptr) : node(theNode) {}
 
             T& operator*() const {return node->element;}
             T* operator->() const {return &(node->element);}
@@ -45,7 +45,7 @@ public:
 void chainTest();
 
 template<typename T>
-std::ostream& operator<<(std::ostream& out, const chainNode<T>& x) {
+std::ostream& operator<<(std::ostream& out, const chain<T>& x) {
     x.output(out);
     return out;
 }

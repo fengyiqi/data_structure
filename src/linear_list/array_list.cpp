@@ -78,6 +78,7 @@ void arrayListTest(){
     arrayList<int> y(10);
     for (int i = 0; i < 20; i++)
         y.insert(i, i);
+    y.erase(10);
     std::cout << y << std::endl;
     std::reverse(y.begin(), y.end());
     std::cout << y << std::endl;

@@ -1,8 +1,11 @@
 #include <sstream>
+#include <iterator>
+#include <algorithm>
+#include <numeric>
 #include "chain.h"
 
 template<class T>
-chain<T>::chain(int initialCapacity = 10) {
+chain<T>::chain(int initialCapacity) {
     if (initialCapacity < 1){
         std::ostringstream ss;
         ss << "Initial capacity = " << initialCapacity << " Must be > 0";
@@ -58,7 +61,7 @@ T& chain<T>::get(int theIndex) const {
     chainNode<T>* currentNode = firstNode;
     for (int i = 0; i < theIndex; i++)
         currentNode = currentNode->next;
-    return currentNode;
+    return currentNode->element;
 }
 
 template<class T>
@@ -84,9 +87,11 @@ void chain<T>::erase(int theIndex) {
         firstNode = firstNode->next;
     }
     else{
-        chainNode<T>* lastNode = get(theIndex - 1);
-        deleteNode = get(theIndex);
-        lastNode->next = deleteNode->next;
+        chainNode<T>* p = firstNode;
+        for (int i = 0; i < theIndex - 1; i++)
+            p = p->next;
+        deleteNode = p->next;
+        p->next = p->next->next;
     }
     listSize--;
     delete deleteNode;
@@ -102,8 +107,10 @@ void chain<T>::insert(int theIndex, const T& theElement) {
     if (theIndex == 0)
         firstNode = new chainNode<T>(theElement, firstNode);
     else {
-        chainNode<T>* lastNode = get(theIndex - 1);
-        lastNode = new chainNode<T>(theElement, lastNode->next);
+        chainNode<T>* p = firstNode;
+        for(int i = 0; i < theIndex - 1; i++)
+            p = p->next;
+        p->next = new chainNode<T>(theElement, p->next);
     }
     listSize++;
 }
@@ -112,4 +119,14 @@ template<class T>
 void chain<T>::output(std::ostream& out) const{
     for(const chainNode<T>* currenNode = firstNode; currenNode != nullptr; currenNode = currenNode->next)
         out << currenNode->element << ", ";
+}
+
+void chainTest() {
+    std::cout << " ---- chain test ---- \n";
+    chain<int> chain;
+    for (int i = 0; i < 20; i++)
+        chain.insert(i, i);
+    chain.erase(10);
+    std::cout << chain << std::endl;
+    std::cout << std::accumulate(chain.begin(), chain.end(), 0) << std::endl;
 }
