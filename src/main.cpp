@@ -6,9 +6,9 @@
 
 int main() {
     arrayListTest();
-    vectorListTest();
-    chainTest();
-    extendedChainTest();
-    matrixTest();
+    // vectorListTest();
+    // chainTest();
+    // extendedChainTest();
+    // matrixTest();
     return 0;
 }

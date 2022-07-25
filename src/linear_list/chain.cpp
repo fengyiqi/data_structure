@@ -48,7 +48,7 @@ chain<T>::~chain() {
 
 template<class T>
 void chain<T>::checkIndex(int theIndex) const {
-    if (theIndex < 0 || theIndex > listSize){
+    if (theIndex < 0 || theIndex >= listSize){
         std::ostringstream ss;
         ss << "index = " << theIndex << " size = " << listSize;
         throw illegalParameterValue(ss.str());

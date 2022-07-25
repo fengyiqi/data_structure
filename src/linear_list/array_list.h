@@ -10,7 +10,7 @@ template<typename T>
 class arrayList : public linearList<T>
 {
 protected:
-    void checkIndex(int theIndex) const;
+    void checkIndex(int theIndex) const; // if invalid, throw an exception
     T* element;
     int arrayLength;
     int listSize;
@@ -18,7 +18,7 @@ public:
     arrayList(int initialCapacity = 10);
     arrayList(const arrayList<T>&);
     ~arrayList() {delete[] element;}
-
+    // --- linear_list pure virtual methods --- 
     bool empty() const {return listSize == 0;}
     int size() const {return listSize;}
     T& get(int index) const;
@@ -28,6 +28,7 @@ public:
     void output(std::ostream& out) const {
         std::copy(element, element + listSize, std::ostream_iterator<T>(std::cout, ", "));
     }
+    // --------- end -------------------------
 
     int capacity() const {return arrayLength;}
 
@@ -60,12 +61,14 @@ public:
     
 };
 
-void arrayListTest();
 
 template<typename T>
 std::ostream& operator<<(std::ostream& out, const arrayList<T>& x) {
     x.output(out);
     return out;
 }
+
+// for testing arrayList
+void arrayListTest();
 
 #endif

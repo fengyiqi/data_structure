@@ -26,7 +26,7 @@ arrayList<T>::arrayList(const arrayList<T>& theList){
 
 template<typename T>
 void arrayList<T>::checkIndex(int theIndex) const {
-    if (theIndex < 0 || theIndex > listSize){
+    if (theIndex < 0 || theIndex >= listSize){ 
         std::ostringstream ss;
         ss << "index = " << theIndex << " size = " << listSize;
         throw illegalParameterValue(ss.str());
@@ -59,7 +59,7 @@ void arrayList<T>::erase(int theIndex) {
 
 template<typename T>
 void arrayList<T>::insert(int theIndex, const T& theElement) {
-    if (theIndex < 0 || theIndex > listSize){
+    if (theIndex < 0 || theIndex > listSize){ // pay attention to the difference betwenn this ">" and ">=" in checkIndex(int)
         std::ostringstream ss;
         ss << "index = " << theIndex << " size = " << listSize;
         throw illegalIndex(ss.str());
