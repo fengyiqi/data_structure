@@ -15,11 +15,11 @@ public:
 
     bool empty() const {return element->empty();}
     int size() const {return element->size();}
-    T& get(int index) const {};
-    int indexOf(const T& theElement) const {};
+    T& get(int index) const;
+    int indexOf(const T& theElement) const;
     void erase(int theIndex);
     void insert(int theIndex, const T& theElement);
-    void output(std::ostream& out) const {};
+    void output(std::ostream& out) const;
 
     int capacity() const {return (int) element->capacity();}
 

@@ -7,8 +7,8 @@
 int main() {
     arrayListTest();
     // vectorListTest();
-    // chainTest();
+    chainTest();
     // extendedChainTest();
-    // matrixTest();
+    matrixTest();
     return 0;
 }
