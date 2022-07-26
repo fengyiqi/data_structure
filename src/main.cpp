@@ -3,12 +3,14 @@
 #include "linear_list/chain.h"
 #include "linear_list/extended_chain.h"
 #include "matrix/matrix.h"
+#include "matrix/sparse_matrix.h"
 
 int main() {
     arrayListTest();
     // vectorListTest();
     chainTest();
     // extendedChainTest();
-    matrixTest();
+    // matrixTest();
+    testSparseMatrix();
     return 0;
 }

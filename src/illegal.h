@@ -43,4 +43,15 @@ class matrixSizeMismatch
       std::string message;
 };
 
+class stackEmpty 
+{
+   public:
+      stackEmpty(std::string theMessage = 
+                   "The stack is empty")
+            {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
 #endif
