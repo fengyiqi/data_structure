@@ -54,4 +54,37 @@ class stackEmpty
       std::string message;
 };
 
+class queueEmpty 
+{
+   public:
+      queueEmpty(std::string theMessage = 
+                   "The stack is empty")
+            {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
+class hashTableFull
+{
+   public:
+      hashTableFull(std::string theMessage = 
+                   "The hash table is full")
+            {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
+class emptyTree 
+{
+   public:
+      emptyTree(std::string theMessage = 
+                   "The tree is empty")
+            {message = theMessage;}
+      void outputMessage() {std::cout << message << std::endl;}
+   private:
+      std::string message;
+};
+
 #endif
